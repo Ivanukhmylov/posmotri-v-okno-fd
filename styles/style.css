@@ -95,7 +95,7 @@ ol {
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 5px;
 }
 
 .search-form__label {
