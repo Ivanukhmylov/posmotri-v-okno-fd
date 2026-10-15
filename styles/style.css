@@ -8,11 +8,17 @@ html {
   block-size: 100%;
 }
 
+body {
+  block-size: 100%;
+  margin: 0;
+}
+
 .page {
   display: flex;
   align-items: center;
+  justify-content: center;
   inline-size: 1200px;
-  block-size: 100%;
+  min-block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
@@ -42,7 +48,7 @@ ol {
 .content {
   margin: 0 auto;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 30px;
   inline-size: 1140px;
 }
@@ -197,7 +203,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 21px;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .title {
@@ -219,7 +225,6 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-self: baseline;
 }
 
 .content__card-link {
