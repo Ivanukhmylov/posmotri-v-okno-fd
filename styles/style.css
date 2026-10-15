@@ -48,7 +48,8 @@ ol {
 .content {
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
+  justify-content: center;
   gap: 30px;
   inline-size: 1140px;
 }
@@ -73,13 +74,14 @@ ol {
 
 .search-form {
   display: flex;
-  gap: 42px;
+  gap: 30px;
+  align-items: flex-start;
 }
 
 .search-form__fieldset {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   inline-size: fit-content;
   border: none;
 }
@@ -93,7 +95,7 @@ ol {
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 5px;
 }
 
 .search-form__label {
@@ -130,7 +132,8 @@ ol {
   font-weight: 400;
   line-height: 22px;
   text-align: start;
-  inline-size: 224px;
+  inline-size: 225px;
+  block-size: 27px;
   color: #fff;
   background-color: transparent;
   outline: none;
@@ -167,7 +170,8 @@ ol {
 
 .search-form__submit-button {
   align-self: flex-end;
-  inline-size: 190px;
+  inline-size: 194px;
+  block-size: 34px;
 }
 
 .button {
@@ -202,7 +206,7 @@ ol {
   inline-size: 399px;
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 26px;
   justify-content: flex-start;
 }
 
@@ -210,7 +214,7 @@ ol {
   font-family: "Oswald", sans-serif;
   font-size: 75px;
   font-weight: 700;
-  line-height: 94%;
+  line-height: 70.5px;
   text-transform: uppercase;
 }
 
@@ -220,11 +224,24 @@ ol {
 
 .content__list {
   position: relative;
-  block-size: 300px;
+  block-size: 298px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+.content__list::-webkit-scrollbar {
+  inline-size: 4px;
+}
+
+.content__list::-webkit-scrollbar-track {
+  background: rgba(217, 217, 217, 0.10);
+}
+
+.content__list::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  block-size: 122px;
 }
 
 .content__card-link {
@@ -257,30 +274,36 @@ ol {
 
 .content__video-card {
   display: flex;
+  align-items: flex-start;
 }
 
 .content__video-card-description-container {
   padding: 4px 0;
-  max-inline-size: 200px;
+  inline-size: 196px;
+  block-size: 103px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  min-inline-size: 0;
+  overflow: hidden;
 }
 
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
   font-size: 30px;
   font-weight: 700;
-  line-height: 100%;
+  line-height: 30px;
   text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-inline-size: 100%;
 }
 
 .content__video-card-description {
   font-weight: 400;
-  line-height: 90%;
+  font-size: 18px;
+  line-height: 16.2px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -298,4 +321,5 @@ ol {
 
 .more-button {
   inline-size: 100%;
+  block-size: 34px;
 }
