@@ -38,11 +38,13 @@ ol {
 }
 
 .content {
-  margin: 133px 30px;
+  margin: 0 auto;
+  padding-block-start: 133px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   gap: 30px;
+  inline-size: 1140px;
 }
 
 .result {
