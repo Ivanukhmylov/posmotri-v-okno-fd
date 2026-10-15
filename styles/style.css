@@ -39,12 +39,12 @@ ol {
 
 .content {
   margin: 0 auto;
-  padding-block-start: 133px;
+  padding-block-start: 333px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  gap: 30px;
-  inline-size: 1140px;
+  gap: 390px;
+  inline-size: 1920px;
 }
 
 .result {
