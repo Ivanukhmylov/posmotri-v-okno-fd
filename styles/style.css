@@ -74,14 +74,14 @@ ol {
 
 .search-form {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   align-items: flex-start;
 }
 
 .search-form__fieldset {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
   inline-size: fit-content;
   border: none;
 }
@@ -95,7 +95,7 @@ ol {
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 15px;
 }
 
 .search-form__label {
