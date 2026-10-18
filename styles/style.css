@@ -99,8 +99,8 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-direction: row;
+  gap: 15px;
 }
 
 .search-form__label {
