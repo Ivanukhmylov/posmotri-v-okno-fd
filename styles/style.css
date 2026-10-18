@@ -53,6 +53,7 @@ ol {
   justify-content: center;
   gap: 30px;
   inline-size: 1140px;
+  padding: 0 30px;
 }
 
 .result {
@@ -77,6 +78,8 @@ ol {
   display: flex;
   gap: 40px;
   align-items: flex-start;
+  inline-size: 711px;
+  min-block-size: 54px;
 }
 
 .search-form__fieldset {
@@ -95,8 +98,8 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  flex-direction: row;
-  gap: 15px;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .search-form__label {
