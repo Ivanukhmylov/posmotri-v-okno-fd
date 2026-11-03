@@ -226,7 +226,7 @@ ol {
   font-style: normal;
   line-height: 94%;
   text-transform: uppercase;
-  transform: rotate(0deg); /* Значение -0° из Figma */
+  transform: rotate(0deg);
 }
 
 .content__accent {
