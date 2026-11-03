@@ -53,7 +53,9 @@ ol {
 .button {
   inline-size: 194px;
   block-size: 34px;
-  border: 1px solid #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
   background-color: transparent;
   color: inherit;
   display: flex;
@@ -207,21 +209,24 @@ ol {
 }
 
 .content__details {
-  inline-size: 100%;
-  block-size: 100%;
+  inline-size: 399px;
+  block-size: 534px;
   display: flex;
   flex-direction: column;
   gap: 26px;
+  opacity: 1;
 }
 
 .title {
-  min-inline-size: 399px;
+  inline-size: 260px;
+  block-size: 210px;
   font-family: Oswald, sans-serif;
   font-size: 75px;
   font-weight: 700;
   font-style: normal;
   line-height: 94%;
   text-transform: uppercase;
+  transform: rotate(0deg); /* Значение -0° из Figma */
 }
 
 .content__accent {
@@ -230,7 +235,10 @@ ol {
 
 .content__list {
   position: relative;
+  inline-size: 399px;
   block-size: 298px;
+  transform: rotate(0deg);
+  opacity: 1;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
