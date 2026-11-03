@@ -13,13 +13,10 @@ body {
   margin: 0;
 }
 
+/* ВОЗВРАЩЕНО ИЗ ОРИГИНАЛА: фиксированная ширина и высота страницы */
 .page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 100%;
-  max-inline-size: 1200px;
-  min-block-size: 100%;
+  inline-size: 1200px;
+  block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
@@ -46,17 +43,16 @@ ol {
   list-style: none;
 }
 
+/* ВОЗВРАЩЕНО ИЗ ОРИГИНАЛА: точные отступы 133px и 30px из макета */
 .content {
-  margin: 0 auto;
+  margin: 133px 30px;
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
-  justify-content: center;
   gap: 30px;
-  inline-size: 100%;
-  max-inline-size: 1140px;
-  padding: 0 30px;
 }
 
+/* Блок вывода выбранного видео и формы поиска */
 .result {
   display: flex;
   flex-direction: column;
@@ -64,21 +60,23 @@ ol {
 }
 
 .result__video-container {
-  position: relative;
   inline-size: 711px;
   block-size: 386px;
+  position: relative;
 }
 
 .result__video {
+  block-size: 386px;
   inline-size: 100%;
-  block-size: 100%;
   object-fit: cover;
 }
 
 .search-form {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end; /* Кнопка прижата к низу */
   gap: 40px;
-  align-items: flex-start;
   inline-size: 711px;
   min-block-size: 54px;
 }
@@ -95,6 +93,7 @@ ol {
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
+  padding-block-end: 5px;
 }
 
 .search-form__checkbox-list {
@@ -142,6 +141,7 @@ ol {
   text-align: start;
   inline-size: 225px;
   block-size: 27px;
+  padding: 0; /* Важно: убираем внутренние отступы инпута */
   color: #fff;
   background-color: transparent;
   outline: none;
@@ -212,19 +212,21 @@ ol {
   background: #545050;
 }
 
+/* Блок вывода списка видео */
 .content__details {
   inline-size: 399px;
   display: flex;
   flex-direction: column;
   gap: 26px;
   justify-content: flex-start;
+  /* Убираем фиксированную высоту, чтобы блок подстраивался под контент */
 }
 
 .title {
   font-family: "Oswald", sans-serif;
   font-size: 75px;
   font-weight: 700;
-  line-height: 70.5px;
+  line-height: 94%; /* ИСПРАВЛЕНО ПОД МАКЕТ */
   text-transform: uppercase;
 }
 
@@ -232,25 +234,26 @@ ol {
   color: #545050;
 }
 
-/* ПРАВКА: добавлена обёртка списка, которая есть в HTML */
+/* ДОБАВЛЕНО: контейнер, в который скрипт добавляет кнопку "Показать ещё" */
 .content__list-container {
   inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .content__list {
   position: relative;
-  block-size: 298px;
-  inline-size: 390px;
+  block-size: 298px; /* Фиксированная высота из макета */
+  inline-size: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  align-self: stretch;
-  flex: none;
-  /* ПРАВКА: убран скрытый скроллбар — оставлен кастомный webkit (ниже) */
+  gap: 30px; /* Отступ между карточками */
 }
 
+/* Кастомный скроллбар */
 .content__list::-webkit-scrollbar {
   inline-size: 4px;
 }
@@ -264,10 +267,7 @@ ol {
   block-size: 122px;
 }
 
-/* ПРАВКА: убран лишний отступ, т.к. между карточками уже задан gap: 30px */
-.content__list-item:not(:last-child) {
-  padding-block-end: 0;
-}
+/* Удалено лишнее правило padding-block-end, так как работает gap */
 
 .content__card-link {
   display: block;
@@ -282,7 +282,6 @@ ol {
 
 .content__card-link:focus-visible {
   outline: 1px solid #fff;
-  outline-offset: 1px; /* ПРАВКА: добавлен отступ, чтобы обводка не прилипала */
 }
 
 .content__card-link:hover .content__video-card-title,
@@ -301,16 +300,16 @@ ol {
 .content__video-card {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .content__video-card-description-container {
   padding: 4px 0;
-  padding-inline-start: 2px; /* ПРАВКА: восстановлен левый отступ из исходника */
   inline-size: 196px;
   block-size: 103px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px; /* ИСПРАВЛЕНО ПОД МАКЕТ: отступ между заголовком и описанием */
   min-inline-size: 0;
   overflow: hidden;
 }
@@ -326,12 +325,13 @@ ol {
   white-space: nowrap;
   max-inline-size: 100%;
   inline-size: 100%;
+  /* Убран padding-block-end: 6px, так как отступ задан через gap: 10px */
 }
 
 .content__video-card-description {
   font-weight: 400;
   font-size: 18px;
-  line-height: 16.2px;
+  line-height: 90%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -343,7 +343,6 @@ ol {
   inline-size: 194px;
   block-size: 103px;
   flex-shrink: 0;
-  margin-inline-start: auto;
   object-position: 50% 50%;
   object-fit: cover;
 }
@@ -351,10 +350,4 @@ ol {
 .more-button {
   inline-size: 100%;
   block-size: 34px;
-}
-
-/* ПРАВКА: добавлена обводка фокуса без изменения геометрии кнопки */
-.more-button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
 }
