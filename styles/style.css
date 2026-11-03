@@ -155,10 +155,6 @@ ol {
   border-inline-end: 1px solid #fff;
 }
 
-.search-form__textfield:focus {
-  outline: none;
-}
-
 .search-form__label {
   inline-size: fit-content;
   cursor: pointer;
@@ -233,22 +229,15 @@ ol {
   color: #545050;
 }
 
-/* Контейнер для карточек и прелоадера */
 .content__list-container {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
   overflow-y: auto;
-  overflow-x: hidden; /* Убираем горизонтальную прокрутку */
-  
-  /* Для Firefox */
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
 }
 
-/* Кастомный скроллбар для Chrome, Safari, Edge */
 .content__list-container::-webkit-scrollbar {
-  inline-size: 4px; /* Делаем скроллбар тонким */
+  inline-size: 4px;
 }
 
 .content__list-container::-webkit-scrollbar-track {
@@ -256,7 +245,7 @@ ol {
 }
 
 .content__list-container::-webkit-scrollbar-thumb {
-  background-color: #545050; /* Цвет в тон дизайну */
+  background-color: #545050;
   border-radius: 4px;
 }
 
@@ -303,14 +292,13 @@ ol {
 
 .content__video-card-description {
   font-weight: 400;
-  line-height: 0.9;
+  line-height: normal;
 }
 
 .content__card-link {
   text-decoration: none;
   color: #fff;
   display: block;
-  margin: 2px;
 }
 
 .content__card-link_current {
