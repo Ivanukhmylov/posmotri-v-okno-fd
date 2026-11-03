@@ -8,8 +8,14 @@ html {
   block-size: 100%;
 }
 
+/* ИЗМЕНЕНО: .page — это body, центрируем контент */
 .page {
-  inline-size: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  max-inline-size: 1200px;
+  min-block-size: 100%;
   block-size: 100%;
   margin: auto;
   color: #fff;
@@ -37,24 +43,32 @@ ol {
   list-style: none;
 }
 
+/* ИЗМЕНЕНО: центрирование вместо margin: 133px 30px */
 .content {
-  margin: 133px 30px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  justify-content: center;
   gap: 30px;
+  inline-size: 100%;
+  max-inline-size: 1140px;
+  padding: 0 30px;
 }
 
 /* Блок вывода выбранного видео и формы поиска */
 .result {
   display: flex;
   flex-direction: column;
+  gap: 16px; /* ДОБАВЛЕНО */
 }
 
 .result__video-container {
   min-inline-size: 711px;
-  padding-block-start: 78px;
+  inline-size: 711px;        /* ДОБАВЛЕНО */
+  block-size: 386px;         /* ДОБАВЛЕНО */
   position: relative;
+  /* ИЗМЕНЕНО: убран padding-block-start: 78px — он сдвигал видео вниз */
 }
 
 .result__video {
@@ -66,9 +80,12 @@ ol {
 .search-form {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
+  gap: 40px;                /* ДОБАВЛЕНО */
+  inline-size: 711px;       /* ДОБАВЛЕНО */
+  min-block-size: 54px;     /* ДОБАВЛЕНО */
   padding-block-start: 11px;
+  /* ИЗМЕНЕНО: убран justify-content: space-between — заменён на gap */
 }
 
 .search-form:last-child {
@@ -77,6 +94,10 @@ ol {
 
 .search-form__fieldset {
   border: none;
+  display: flex;            /* ДОБАВЛЕНО */
+  flex-direction: column;   /* ДОБАВЛЕНО */
+  gap: 5px;                 /* ДОБАВЛЕНО */
+  inline-size: fit-content; /* ДОБАВЛЕНО */
 }
 
 .search-form__fieldset-title {
@@ -97,13 +118,18 @@ ol {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 5px;                 /* ДОБАВЛЕНО */
   inline-size: fit-content;
+  cursor: pointer;          /* ДОБАВЛЕНО */
 }
 
 .visually-hidden { /* скрываем дефолтные элементы */
   position: absolute;
   inline-size: 1px;
   block-size: 1px;
+  margin: 0;                /* ДОБАВЛЕНО */
+  padding: 0;               /* ДОБАВЛЕНО */
+  border: 0;                /* ДОБАВЛЕНО */
   overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -119,6 +145,9 @@ ol {
   font-family: "Fira Sans Condensed", sans-serif;
   background-color: transparent;
   min-inline-size: 225px;
+  inline-size: 225px;       /* ДОБАВЛЕНО */
+  block-size: 27px;         /* ДОБАВЛЕНО */
+  text-align: start;        /* ДОБАВЛЕНО */
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
   border-left: none;
@@ -144,6 +173,12 @@ ol {
   outline-offset: 1px;
 }
 
+/* ДОБАВЛЕНО: общий focus-visible для лейбла */
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
 .search-form__textfield:active {
   border-right: 1px solid #fff;
   border-left: 1px solid #fff;
@@ -151,7 +186,10 @@ ol {
 
 .search-form__pseudo-checkbox { /* блок с чебоксами */
   cursor: pointer;
-  display: block;
+  display: flex;            /* ИЗМЕНЕНО: было block — для центрирования ::before */
+  justify-content: center;  /* ДОБАВЛЕНО */
+  align-items: center;      /* ДОБАВЛЕНО */
+  flex-shrink: 0;           /* ДОБАВЛЕНО */
   inline-size: 19px;
   block-size: 19px;
   border: 1px solid #fff;
@@ -163,7 +201,7 @@ ol {
   inline-size: 15px;
   block-size: 15px;
   background-color: #fff;
-  margin: 1px;
+  /* ИЗМЕНЕНО: margin: 1px не нужен при flex-центрировании */
 }
 
 .search-form__label:has(.search-form__checkbox:focus-visible) {
@@ -179,6 +217,11 @@ ol {
   text-decoration: underline;
 }
 
+/* ДОБАВЛЕНО: подчёркивание текста лейбла при наведении */
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
 .button {
   cursor: pointer;
   font-size: 18px;
@@ -188,10 +231,16 @@ ol {
   font-weight: 400;
   line-height: 21px;
   border: 1px solid #fff;
+  padding: 0;               /* ДОБАВЛЕНО */
 }
 
 .button:focus {
   outline: none;
+}
+
+.button:focus-visible {     /* ДОБАВЛЕНО */
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
 
 .button:hover {
@@ -204,6 +253,10 @@ ol {
 
 .search-form__submit-button {
   padding: 6px 73.5px;
+  align-self: flex-end;     /* ДОБАВЛЕНО */
+  margin-block-start: auto; /* ДОБАВЛЕНО */
+  inline-size: 194px;       /* ДОБАВЛЕНО */
+  block-size: 34px;         /* ДОБАВЛЕНО */
 }
 
 .search-form__submit-button:focus-visible {
@@ -213,8 +266,13 @@ ol {
 
 /* Блок вывода списка видео */
 .content__details {
+  /* ИЗМЕНЕНО: фиксированная ширина + flex-колонка */
+  inline-size: 399px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  justify-content: flex-start;
   block-size: 100%;
-  inline-size: 100%;
 }
 
 .title {
@@ -237,12 +295,36 @@ ol {
   top: -0.1em;
 }
 
+/* ДОБАВЛЕНО: обёртка списка, которая есть в HTML */
+.content__list-container {
+  inline-size: 100%;
+}
+
 .content__list {
-  max-block-size: 298px;
+  /* ИЗМЕНЕНО: block-size вместо max-block-size, flex-колонка, кастомный скроллбар */
+  block-size: 298px;
+  inline-size: 390px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  scrollbar-width: none; /* изменен дефолтный скролл */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* ИЗМЕНЕНО: убран scrollbar-width: none — в эталоне кастомный webkit-скроллбар */
+}
+
+/* ДОБАВЛЕНО: кастомный скроллбар для webkit */
+.content__list::-webkit-scrollbar {
+  inline-size: 4px;
+}
+
+.content__list::-webkit-scrollbar-track {
+  background: rgba(217, 217, 217, 0.1);
+}
+
+.content__list::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  block-size: 122px;
 }
 
 .content__list-item:not(:last-child) {
@@ -253,6 +335,7 @@ ol {
   display: block;
   text-decoration: none;
   color: #fff;
+  padding: 2px;             /* ДОБАВЛЕНО */
 }
 
 .content__card-link:focus {
@@ -262,14 +345,16 @@ ol {
 .content__card-link:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 1px;
-  margin: 2px;
+  /* ИЗМЕНЕНО: убран margin: 2px — он дёргал карточку при фокусе */
 }
 
 .content__card-link_current {
   background: rgba(84, 80, 80, 1);
 }
 
-.content__card-link:hover {
+/* ИЗМЕНЕНО: подчёркивание только заголовка и описания, а не всей ссылки */
+.content__card-link:hover .content__video-card-title,
+.content__card-link:hover .content__video-card-description {
   text-decoration: underline;
 }
 
@@ -277,13 +362,22 @@ ol {
   background-color: rgba(84, 80, 80, 1);
 }
 
+/* ИЗМЕНЕНО: flex вместо grid — картинка справа фиксированной ширины */
 .content__video-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   align-items: flex-start;
 }
 
 .content__video-card-description-container {
+  /* ИЗМЕНЕНО: фиксированные размеры + обрезка */
+  padding: 4px 0;
+  inline-size: 196px;
+  block-size: 103px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-inline-size: 0;
+  overflow: hidden;
   padding-inline-start: 2px;
 }
 
@@ -294,28 +388,47 @@ ol {
   line-height: 100%;
   text-transform: uppercase;
   padding-block-end: 6px;
+  /* ДОБАВЛЕНО: обрезка длинного заголовка */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-inline-size: 100%;
+  inline-size: 100%;
 }
 
 .content__video-card-description {
   font-weight: 400;
   line-height: 90%;
+  /* ДОБАВЛЕНО: многострочная обрезка */
+  font-size: 18px;
+  line-height: 16.2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .content__video-card-thumbnail {
   display: block;
-  justify-self: end;
+  /* ИЗМЕНЕНО: justify-self не работает во flex — margin-inline-start: auto */
+  margin-inline-start: auto;
   inline-size: 194px;
   block-size: 103px;
+  flex-shrink: 0;
+  object-position: 50% 50%;
+  object-fit: cover;
 }
 
 .more-button {
   padding: 6px 146px;
+  /* ДОБАВЛЕНО: растягиваем на всю ширину списка */
+  inline-size: 100%;
+  block-size: 34px;
 }
 
-/* Добавила отступы для обводки кнопки со всех сторон */
+/* ИЗМЕНЕНО: убраны margin/padding при фокусе — они дёргали кнопку */
 .more-button:focus-visible {
-  margin: 2px;
-  padding: 6px 140px;
   outline: 1px solid #fff;
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
