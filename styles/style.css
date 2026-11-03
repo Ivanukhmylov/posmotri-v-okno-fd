@@ -8,18 +8,9 @@ html {
   block-size: 100%;
 }
 
-body {
-  block-size: 100%;
-  margin: 0;
-}
-
 .page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 100%;
-  max-inline-size: 1200px;
-  min-block-size: 100%;
+  inline-size: 1200px;
+  block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
@@ -47,87 +38,72 @@ ol {
 }
 
 .content {
-  margin: 0 auto;
+  margin: 133px 30px;
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
-  justify-content: center;
   gap: 30px;
-  inline-size: 100%;
-  max-inline-size: 1140px;
-  padding: 0 30px;
 }
 
+/* Блок вывода выбранного видео и формы поиска */
 .result {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .result__video-container {
+  min-inline-size: 711px;
+  padding-block-start: 78px;
   position: relative;
-  inline-size: 711px;
-  block-size: 386px;
 }
 
 .result__video {
+  block-size: 386px;
   inline-size: 100%;
-  block-size: 100%;
   object-fit: cover;
 }
 
 .search-form {
   display: flex;
-  gap: 40px;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
-  inline-size: 711px;
-  min-block-size: 54px;
+  padding-block-start: 11px;
+}
+
+.search-form:last-child {
+  align-items: flex-end;
 }
 
 .search-form__fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  inline-size: fit-content;
   border: none;
 }
 
 .search-form__fieldset-title {
   font-weight: 400;
   font-size: 18px;
-  line-height: 18px;
+  line-height: 22px;
+  padding-block-end: 5px;
 }
 
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
   gap: 15px;
+  padding-block-start: 4px;
 }
 
 .search-form__label {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
   inline-size: fit-content;
-  cursor: pointer;
 }
 
-.search-form__label:has(:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
-}
-
-.search-form__label:hover .search-form__label-text {
-  text-decoration: underline;
-}
-
-.visually-hidden {
+.visually-hidden { /* скрываем дефолтные элементы */
   position: absolute;
   inline-size: 1px;
   block-size: 1px;
-  margin: 0;
-  padding: 0;
-  border: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -135,19 +111,18 @@ ol {
 }
 
 .search-form__textfield {
-  font-family: "Fira Sans Condensed", sans-serif;
-  font-size: 18px;
+  cursor: pointer;
   font-weight: 400;
   line-height: 22px;
-  text-align: start;
-  inline-size: 225px;
-  block-size: 27px;
+  font-size: 18px;
   color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
   background-color: transparent;
-  outline: none;
-  border: none;
+  min-inline-size: 225px;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
+  border-left: none;
+  border-right: none;
   appearance: none;
 }
 
@@ -159,49 +134,64 @@ ol {
   outline: none;
 }
 
-.search-form__pseudo-checkbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
+/* Согласно документации https://www.w3.org/TR/selectors-4/#the-focus-visible-pseudo 
+поведение псевдокласса :focus-visible для некоторых элементов, включая input,
+не может быть осуществлено таким образом, как задумано в брифе.
+Браузерные настройки некоторых браузеров все равно будут выставлять рамку для
+:focus-visible при клике мышью или тачпадом.  */
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__textfield:active {
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+}
+
+.search-form__pseudo-checkbox { /* блок с чебоксами */
+  cursor: pointer;
+  display: block;
   inline-size: 19px;
   block-size: 19px;
   border: 1px solid #fff;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  content: "";
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
   display: block;
+  content: "";
   inline-size: 15px;
   block-size: 15px;
   background-color: #fff;
+  margin: 1px;
 }
 
-.search-form__submit-button {
-  align-self: flex-end;
-  margin-block-start: auto;
-  inline-size: 194px;
-  block-size: 34px;
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label-text {
+  padding-inline-start: 5px;
+}
+
+.search-form__label:not(:has(.search-form__textfield)):hover {
+  text-decoration: underline;
 }
 
 .button {
-  font-family: "Fira Sans Condensed", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 0;
-  color: #fff;
-  background: none;
-  border: 1px solid currentColor;
   cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  background-color: transparent;
+  font-weight: 400;
+  line-height: 21px;
+  border: 1px solid #fff;
 }
 
 .button:focus {
   outline: none;
-}
-
-.button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
 }
 
 .button:hover {
@@ -209,60 +199,60 @@ ol {
 }
 
 .button:active {
-  background: #545050;
+  background-color: rgba(84, 80, 80, 1);
 }
 
+.search-form__submit-button {
+  padding: 6px 73.5px;
+}
+
+.search-form__submit-button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+/* Блок вывода списка видео */
 .content__details {
-  inline-size: 399px;
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-  justify-content: flex-start;
+  block-size: 100%;
+  inline-size: 100%;
 }
 
 .title {
-  font-family: "Oswald", sans-serif;
-  font-size: 75px;
+  padding-block-end: 23px;
+  font-family: "Oswald";
   font-weight: 700;
-  line-height: 70.5px;
+  font-size: 75px;
+  line-height: 93%;
   text-transform: uppercase;
 }
 
 .content__accent {
   color: #545050;
+  position: relative;
+}
+
+.content__accent::after {
+  content: "-";
+  position: relative;
+  top: -0.1em;
 }
 
 .content__list {
-  position: relative;
-  block-size: 298px;
-  inline-size: 390px;
+  max-block-size: 298px;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  align-self: stretch;
-  flex: none;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-width: none; /* изменен дефолтный скролл */
 }
 
-.content__list::-webkit-scrollbar {
-  inline-size: 4px;
-}
-
-.content__list::-webkit-scrollbar-track {
-  background: rgba(217, 217, 217, 0.1);
-}
-
-.content__list::-webkit-scrollbar-thumb {
-  background: #d9d9d9;
-  block-size: 122px;
+.content__list-item:not(:last-child) {
+  padding-block-end: 32px;
 }
 
 .content__card-link {
   display: block;
   text-decoration: none;
   color: #fff;
-  padding: 2px;
 }
 
 .content__card-link:focus {
@@ -271,71 +261,61 @@ ol {
 
 .content__card-link:focus-visible {
   outline: 1px solid #fff;
+  outline-offset: 1px;
+  margin: 2px;
 }
 
-.content__card-link:hover .content__video-card-title,
-.content__card-link:hover .content__video-card-description {
+.content__card-link_current {
+  background: rgba(84, 80, 80, 1);
+}
+
+.content__card-link:hover {
   text-decoration: underline;
 }
 
 .content__card-link:active {
-  background: #545050;
-}
-
-.content__card-link_current {
-  background: #545050;
+  background-color: rgba(84, 80, 80, 1);
 }
 
 .content__video-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: flex-start;
 }
 
 .content__video-card-description-container {
-  padding: 4px 0;
-  inline-size: 196px;
-  block-size: 103px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-inline-size: 0;
-  overflow: hidden;
+  padding-inline-start: 2px;
 }
 
 .content__video-card-title {
-  font-family: "Oswald", sans-serif;
-  font-size: 30px;
+  font-family: "Oswald";
   font-weight: 700;
-  line-height: 30px;
+  font-size: 30px;
+  line-height: 100%;
   text-transform: uppercase;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-inline-size: 100%;
-  inline-size: 100%;
+  padding-block-end: 6px;
 }
 
 .content__video-card-description {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 16.2px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+  line-height: 90%;
 }
 
 .content__video-card-thumbnail {
+  display: block;
+  justify-self: end;
   inline-size: 194px;
   block-size: 103px;
-  flex-shrink: 0;
-  margin-inline-start: auto;
-  object-position: 50% 50%;
-  object-fit: cover;
 }
 
 .more-button {
-  inline-size: 100%;
-  block-size: 34px;
+  padding: 6px 146px;
+}
+
+/* Добавила отступы для обводки кнопки со всех сторон */
+.more-button:focus-visible {
+  margin: 2px;
+  padding: 6px 140px;
+  outline: 1px solid #fff;
+  outline-offset: 1px;
 }
