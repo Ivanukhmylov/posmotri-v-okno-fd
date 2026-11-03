@@ -8,14 +8,15 @@ html {
   block-size: 100%;
 }
 
-/* Базовые стили страницы (адаптированы под новый дизайн) */
-body {
-  margin: 0;
-  padding: 0;
+.page {
+  inline-size: 1200px;
+  min-block-size: 800px;          /* из генератора */
+  block-size: 100%;
+  margin: auto;
+  color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
-  color: #ffffff;
 }
 
 h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
@@ -23,351 +24,89 @@ h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
   padding: 0;
 }
 
+fieldset {
+  min-inline-size: 0;             /* сброс дефолтного min-width fieldset */
+  border: none;
+}
+
 ul, ol {
   list-style: none;
 }
 
-/* --- НОВЫЙ КОД ИЗ СКРИНШОТОВ --- */
-
-.element {
-  background-color: #1b1919;
-  width: 100%;
-  min-width: 1200px;
-  min-height: 800px;
+/* ----- Основная раскладка ----- */
+.content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.element .content {
-  display: inline-flex;
-  height: 534px;
-  width: 1140px;
-  position: relative;
+  flex-direction: row;
   align-items: flex-end;
   justify-content: center;
   gap: 30px;
+  inline-size: 1140px;            /* из генератора (было через margin 30px) */
+  block-size: 534px;              /* из генератора */
+  margin: 133px auto 0;           /* верхний отступ сохранён из исходника */
 }
 
-.element .result {
-  display: inline-flex;
+/* ----- Блок результата (видео + форма) ----- */
+.result {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
-  position: relative;
+  gap: 16px;                      /* из генератора: .result gap 16px */
   flex: 0 0 auto;
+  inline-size: 711px;             /* из генератора */
 }
 
-.element .video {
+.result__video-container {
+  inline-size: 711px;             /* из генератора */
+  block-size: 386px;              /* из генератора */
   position: relative;
-  width: 711px;
-  height: 386px;
+  /* padding-block-start: 78px убран — в генераторе его нет */
+}
+
+.result__video {
+  block-size: 386px;
+  inline-size: 711px;             /* фикс. ширина из генератора */
   object-fit: cover;
 }
 
-.element .search-form {
-  position: relative;
-  width: 711px;
-  height: 54px;
-}
-
-.element .button {
-  all: unset;
-  box-sizing: border-box;
+.search-form {
   display: flex;
-  width: 194px;
-  height: 34px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: absolute;
-  top: 20px;
-  left: 517px;
-  border: 1px solid;
-  border-color: #ffffff;
-  cursor: pointer;
-}
-
-.element .text-wrapper {
-  width: fit-content;
-  font-weight: 700;
-  color: #ffffff;
-  text-align: center;
-  line-height: normal;
-  position: relative;
-  font-family: "Fira Sans Condensed", Helvetica;
-  font-size: 18px;
-  letter-spacing: 0;
-}
-
-.element .time {
-  display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 5px;
-  position: absolute;
-  top: 0;
-  left: 265px;
+  inline-size: 711px;             /* из генератора */
+  block-size: 54px;               /* из генератора */
+  /* padding-block-start: 11px убран — отступ теперь через gap у .result */
 }
 
-.element .div {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Fira Sans Condensed", Helvetica;
+.search-form:last-child {
+  align-items: flex-end;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__fieldset-title {
   font-weight: 400;
-  color: #ffffff;
   font-size: 18px;
-  letter-spacing: 0;
-  line-height: normal;
+  line-height: 22px;
+  padding-block-end: 5px;
 }
 
-.element .group {
-  position: relative;
-  width: 212px;
-  height: 22px;
-}
-
-.element .option {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  position: absolute;
-  top: 0;
-  left: 150px;
-}
-
-.element .div-2 {
-  position: relative;
-  width: 19px;
-  height: 19px;
-  border: 1px solid;
-  border-color: #ffffff;
-}
-
-.element .option-2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  position: absolute;
-  top: 0;
-  left: 74px;
-}
-
-.element .rectangle {
-  position: relative;
-  top: 2px;
-  left: 2px;
-  width: 15px;
-  height: 15px;
-  background-color: #ffffff;
-  border: 1px solid;
-}
-
-.element .option-3 {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.element .city {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.element .label {
-  position: relative;
-  width: 51.4px;
-  margin-top: -1px;
-  font-family: "Fira Sans Condensed", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.element .input {
+.search-form__checkbox-list {
   display: flex;
-  width: 225px;
-  height: 270px;
+  flex-direction: row;
+  gap: 15px;                      /* между опциями; внутри опции — 5px */
+  padding-block-start: 4px;
+}
+
+.search-form__label {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
-  position: relative;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: #ffffff;
+  gap: 5px;                       /* из генератора: .option gap 5px */
+  inline-size: fit-content;
 }
-
-.element .text-wrapper-2 {
-  width: fit-content;
-  font-weight: 400;
-  color: #ffffffb2;
-  line-height: normal;
-  position: relative;
-  font-family: "Fira Sans Condensed", Helvetica;
-  font-size: 18px;
-  letter-spacing: 0;
-}
-
-.element .details {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 26px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.element .title {
-  position: relative;
-  width: fit-content;
-  margin-top: -2.15px;
-  margin-left: -1.15px;
-  -webkit-text-stroke: 1.15px #ffffff;
-  font-family: "Oswald", Helvetica;
-  font-weight: 700;
-  color: transparent;
-  font-size: 75px;
-  letter-spacing: 0;
-  line-height: 70.5px;
-}
-
-.element .span {
-  color: #545050;
-}
-
-.element .text-wrapper-3 {
-  color: #ffffff;
-}
-
-.element .search-results {
-  position: relative;
-  width: 390px;
-  flex: 0 0 auto;
-}
-
-.element .search-results-2 {
-  display: flex;
-  flex-direction: column;
-  width: 390px;
-  align-items: flex-start;
-  gap: 30px;
-  position: absolute;
-  top: -270px;
-  left: 2px;
-}
-
-.element .card-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-}
-
-.element .tbilisi {
-  display: flex;
-  align-items: center;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-}
-
-.element .description {
-  display: flex;
-  flex-direction: column;
-  width: 196px;
-  height: 103px;
-  align-items: flex-start;
-  gap: 6px;
-  position: relative;
-}
-
-.element .text-wrapper-4 {
-  position: relative;
-  align-self: stretch;
-  margin-top: -1px;
-  font-family: "Oswald", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 30px;
-  letter-spacing: 0;
-  line-height: 30px;
-}
-
-.element .text-wrapper-5 {
-  align-self: stretch;
-  font-weight: 400;
-  color: #ffffff;
-  line-height: 16.2px;
-  position: relative;
-  font-family: "Fira Sans Condensed", Helvetica;
-  font-size: 18px;
-  letter-spacing: 0;
-}
-
-.element .preview {
-  position: relative;
-  width: 194px;
-  height: 103px;
-  object-fit: cover;
-}
-
-.element .img {
-  position: relative;
-  width: 194px;
-  height: 99px;
-  object-fit: cover;
-}
-
-.element .div-wrapper {
-  all: unset;
-  box-sizing: border-box;
-  display: flex;
-  height: 34px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  border: 1px solid;
-  border-color: #ffffff;
-  cursor: pointer;
-}
-
-.element .scrollbar {
-  position: absolute;
-  top: 0;
-  left: 395px;
-  width: 4px;
-  height: 298px;
-  background-color: #d9d9d91a;
-}
-
-.element .rectangle-2 {
-  position: relative;
-  top: 216px;
-  height: 82px;
-  background-color: #d9d9d9;
-}
-
-/* --- УТИЛИТАРНЫЕ КЛАССЫ ИЗ СТАРОГО КОДА (оставлены для доступности) --- */
 
 .visually-hidden {
   position: absolute;
@@ -377,4 +116,237 @@ ul, ol {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+.search-form__textfield {
+  cursor: pointer;
+  font-weight: 400;
+  line-height: 22px;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  background-color: transparent;
+  inline-size: 225px;             /* из генератора .input width */
+  block-size: 34px;               /* из генератора .input height (270 — ошибка экспорта) */
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;               /* для Safari */
+  appearance: none;
+}
+
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+/* :active через box-shadow, чтобы не менять ширину поля */
+.search-form__textfield:active {
+  box-shadow: inset 1px 0 0 #fff, inset -1px 0 0 #fff;
+}
+
+.search-form__pseudo-checkbox {
+  cursor: pointer;
+  display: block;
+  inline-size: 19px;
+  block-size: 19px;
+  border: 1px solid #fff;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  display: block;
+  content: "";
+  inline-size: 15px;
+  block-size: 15px;
+  background-color: #fff;
+  margin: 1px;
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label-text {
+  /* отступ заменён на gap у .search-form__label — padding больше не нужен */
+}
+
+.search-form__label:not(:has(.search-form__textfield)):hover {
+  text-decoration: underline;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  background-color: transparent;
+  font-weight: 400;
+  line-height: 21px;
+  border: 1px solid #fff;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;        /* перенесено на уровень .button */
+  outline-offset: 1px;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background-color: rgba(84, 80, 80, 1);
+}
+
+/* ----- Кнопка «Найти» ----- */
+.search-form__submit-button {
+  inline-size: 194px;             /* из генератора .button width */
+  block-size: 34px;               /* из генератора .button height */
+  flex: 0 0 auto;
+  /* padding заменён фикс. размерами; центрирование текста */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----- Правая колонка ----- */
+.content__details {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;                      /* из генератора .details gap 26px */
+  inline-size: 390px;             /* из генератора .search-results width */
+  flex: 0 0 auto;
+}
+
+.title {
+  font-family: "Oswald", sans-serif;  /* добавлен fallback */
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 70.5px;            /* из генератора (=94%) */
+  text-transform: uppercase;
+  /* padding-block-end: 23px заменён на gap 26px у .content__details */
+}
+
+.content__accent {
+  color: #545050;
+  position: relative;
+}
+
+.content__accent::after {
+  content: "-";
+  position: relative;
+  top: -0.1em;
+}
+
+.content__list {
+  block-size: 298px;              /* из генератора (было max-block-size) */
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-width: none;
+}
+
+.content__list::-webkit-scrollbar {  /* скрытие скроллбара в WebKit */
+  display: none;
+}
+
+/* Между карточками 30px (gap в .card-list генератора) */
+.content__list-item:not(:last-child) {
+  padding-block-end: 30px;        /* было 32px */
+}
+
+.content__card-link {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+  margin: 2px;
+}
+
+.content__card-link_current {
+  background: rgba(84, 80, 80, 1);
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:active {
+  background-color: rgba(84, 80, 80, 1);
+}
+
+/* ----- Карточка видео ----- */
+.content__video-card {
+  display: flex;                  /* генератор: flex, не grid */
+  align-items: center;            /* из .tbilisi align-items: center */
+  justify-content: space-between;
+  gap: 0;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;                       /* из генератора .description gap 6px */
+  inline-size: 196px;             /* из генератора */
+  padding-inline-start: 2px;
+}
+
+.content__video-card-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;              /* из генератора */
+  text-transform: uppercase;
+  /* padding-block-end: 6px заменён на gap 6px */
+}
+
+.content__video-card-description {
+  font-weight: 400;
+  line-height: 16.2px;            /* из генератора */
+}
+
+.content__video-card-thumbnail {
+  display: block;
+  inline-size: 194px;             /* из генератора */
+  block-size: 103px;              /* из генератора */
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+/* ----- Кнопка «Показать ещё» ----- */
+.more-button {
+  inline-size: 100%;              /* генератор: align-self stretch, width 100% */
+  block-size: 34px;               /* из генератора .div-wrapper height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;                     /* убран фикс. padding */
+}
+
+.more-button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+  /* margin/padding больше не меняются — нет «прыжка» */
 }
