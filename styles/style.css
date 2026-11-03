@@ -233,16 +233,22 @@ ol {
   color: #545050;
 }
 
+.content__list-container {
+  /* Контейнер для скролла и добавления прелоадера */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
 .content__list {
   position: relative;
   inline-size: 399px;
   block-size: 298px;
   transform: rotate(0deg);
   opacity: 1;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   gap: 30px;
 }
 
