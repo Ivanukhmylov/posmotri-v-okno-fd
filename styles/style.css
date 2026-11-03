@@ -233,18 +233,36 @@ ol {
   color: #545050;
 }
 
+/* Контейнер для карточек и прелоадера */
 .content__list-container {
-  /* Контейнер для скролла и добавления прелоадера */
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+  
+  /* Для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #545050 transparent;
+}
+
+/* Кастомный скроллбар для Chrome, Safari, Edge */
+.content__list-container::-webkit-scrollbar {
+  inline-size: 4px; /* Делаем скроллбар тонким */
+}
+
+.content__list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content__list-container::-webkit-scrollbar-thumb {
+  background-color: #545050; /* Цвет в тон дизайну */
+  border-radius: 4px;
 }
 
 .content__list {
   position: relative;
   inline-size: 399px;
-  block-size: 298px;
   transform: rotate(0deg);
   opacity: 1;
   display: flex;
