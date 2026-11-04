@@ -1,5 +1,5 @@
 /* =========================================
-   ГЛОБАЛЬНЫЕ СТИЛИ И СБРОС
+   1. БАЗОВЫЙ СБРОС И ГЛОБАЛЬНЫЕ СТИЛИ
    ========================================= */
 *,
 *::before,
@@ -11,9 +11,12 @@ html {
   block-size: 100%;
 }
 
+body {
+  margin: 0;
+}
+
 .page {
   min-block-size: 100%;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,23 +46,24 @@ ul, ol {
 }
 
 /* =========================================
-   ОСНОВНОЙ КОНТЕЙНЕР
+   2. ОСНОВНОЙ КОНТЕЙНЕР (1200px)
    ========================================= */
 .content {
   inline-size: 1200px;
   display: flex;
   flex-direction: row;
-  align-items: flex-end; /* Выравниваем по нижнему краю */
+  align-items: flex-end; /* Выравниваем низ колонок */
   gap: 30px;
 }
 
 /* =========================================
-   ЛЕВАЯ КОЛОНКА: ВИДЕО И ФОРМА
+   3. ЛЕВАЯ КОЛОНКА (ВИДЕО + ФОРМА)
    ========================================= */
 .result {
   display: flex;
   flex-direction: column;
   inline-size: 711px;
+  gap: 11px; /* Отступ между видео и формой ровно 11px */
 }
 
 .result__video-container {
@@ -75,13 +79,14 @@ ul, ol {
   object-position: center;
 }
 
-/* --- ФОРМА (Точная подгонка по высоте) --- */
+/* =========================================
+   4. ФОРМА ПОИСКА
+   ========================================= */
 .search-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end; /* Всё выравниваем по нижней линии */
-  padding-block-start: 11px; /* Отступ от видео до формы */
+  align-items: flex-end; /* Кнопка "Найти" прижата к низу */
 }
 
 .search-form__fieldset {
@@ -94,14 +99,15 @@ ul, ol {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  padding-block-end: 5px;
+  padding-block-end: 5px; /* Точный отступ до текста */
 }
 
+/* --- ПОЛЕ ВВОДА "ГОРОД" --- */
 .search-form__textfield {
   cursor: text;
   padding: 0;
   font-weight: 400;
-  line-height: 22px; /* Точная высота строки */
+  line-height: 22px;
   font-size: 18px;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
@@ -132,7 +138,7 @@ ul, ol {
   border-left: 1px solid #fff;
 }
 
-/* Чекбоксы */
+/* --- ЧЕКБОКСЫ "ВРЕМЯ СУТОК" --- */
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
@@ -178,13 +184,15 @@ ul, ol {
   text-decoration: underline;
 }
 
+/* --- КНОПКА "НАЙТИ" --- */
 .search-form__submit-button {
   padding: 6px 73.5px;
-  block-size: 34px; /* Жестко задаем высоту кнопки по макету */
-  margin-block-start: 0; /* Убираем возможные отступы */
+  block-size: 34px; /* Жесткая высота, чтобы не прыгала */
 }
 
-/* Кнопки */
+/* =========================================
+   5. ОБЩИЕ СТИЛИ КНОПОК
+   ========================================= */
 .button {
   cursor: pointer;
   font-size: 18px;
@@ -217,23 +225,23 @@ ul, ol {
 }
 
 /* =========================================
-   ПРАВАЯ КОЛОНКА: ЗАГОЛОВОК И СПИСОК
+   6. ПРАВАЯ КОЛОНКА (ЗАГОЛОВОК И СПИСОК)
    ========================================= */
 .content__details {
   inline-size: 399px;
-  block-size: 534px;
+  block-size: 534px; /* Жесткая высота ровно по макету */
   display: flex;
   flex-direction: column;
 }
 
-/* --- ТОЧНАЯ ПОДГОНКА ЗАГОЛОВКА --- */
+/* --- ЗАГОЛОВОК --- */
 .title {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 75px;
-  line-height: 0.93; /* Межстрочный интервал как в макете */
+  line-height: 0.93; /* Идеальный межстрочный интервал */
   text-transform: uppercase;
-  margin-block-end: 26px; /* Отступ до списка */
+  margin-block-end: 26px; /* Отступ до списка карточек */
 }
 
 .content__accent {
@@ -241,11 +249,11 @@ ul, ol {
 }
 
 /* =========================================
-   СПИСОК И КАРТОЧКИ
+   7. КОНТЕЙНЕР СПИСКА (СКРОЛЛ)
    ========================================= */
 .content__list-container {
   position: relative;
-  block-size: 298px;
+  block-size: 298px; /* Жестко 298px как в макете */
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -270,6 +278,9 @@ ul, ol {
   padding-inline-end: 4px;
 }
 
+/* =========================================
+   8. КАРТОЧКИ ВИДЕО
+   ========================================= */
 .content__video-card {
   display: grid;
   grid-template-columns: 1fr 194px; 
@@ -280,7 +291,7 @@ ul, ol {
 .content__video-card-description-container {
   padding-inline-start: 2px;
   overflow: hidden;
-  min-inline-size: 0; 
+  min-inline-size: 0; /* Обязательно для работы многоточия */
 }
 
 .content__video-card-title {
@@ -290,9 +301,9 @@ ul, ol {
   line-height: 1.0;
   text-transform: uppercase;
   padding-block-end: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap;      
+  overflow: hidden;         
+  text-overflow: ellipsis;  /* Обрезка городов троеточием */
 }
 
 .content__video-card-description {
@@ -336,7 +347,7 @@ ul, ol {
 }
 
 /* =========================================
-   ЛОАДЕР И КНОПКА
+   9. ЛОАДЕР И КНОПКА "ПОКАЗАТЬ ЕЩЕ"
    ========================================= */
 .preloader {
   position: absolute;
@@ -353,5 +364,5 @@ ul, ol {
   inline-size: 100%;
   block-size: 34px; /* Высота как у кнопки Найти */
   padding-block: 6px;
-  margin-block-start: 24px;
+  margin-block-start: 24px; /* Отступ от списка до кнопки */
 }
