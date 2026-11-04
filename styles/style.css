@@ -21,22 +21,12 @@ html {
   align-items: center;
 }
 
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-li,
-blockquote,
-fieldset {
+h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
   margin: 0;
   padding: 0;
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
@@ -242,31 +232,33 @@ ol {
   position: relative;
   inline-size: 399px;
   block-size: 298px;
-  overflow-y: auto;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  scrollbar-width: thin;
-  scrollbar-color: #545050 transparent;
-}
-
-.content__list-container::-webkit-scrollbar {
-  inline-size: 4px;
-}
-
-.content__list-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.content__list-container::-webkit-scrollbar-thumb {
-  background-color: #545050;
-  border-radius: 4px;
+  overflow: hidden;
 }
 
 .content__list {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #545050 transparent;
+  padding-inline-end: 4px;
+}
+
+.content__list::-webkit-scrollbar {
+  inline-size: 4px;
+}
+
+.content__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content__list::-webkit-scrollbar-thumb {
+  background-color: #545050;
+  border-radius: 4px;
 }
 
 .content__video-card {
@@ -274,6 +266,7 @@ ol {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  gap: 10px;
 }
 
 .content__video-card-description-container {
@@ -292,6 +285,7 @@ ol {
   block-size: 103px;
   object-fit: cover;
   object-position: center;
+  flex-shrink: 0;
 }
 
 .content__video-card-title {
@@ -350,6 +344,7 @@ ol {
 }
 
 .more-button {
-  inline-size: 100%;
   flex-shrink: 0;
+  inline-size: 100%;
+  margin-block-start: 24px;
 }
