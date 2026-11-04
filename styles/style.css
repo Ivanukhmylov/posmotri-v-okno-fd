@@ -15,8 +15,8 @@ html {
   min-block-size: 100%;
   margin: 0;
   display: flex;
-  justify-content: center; /* Центрируем контент по горизонтали */
-  align-items: center;     /* Центрируем контент по вертикали */
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
@@ -43,29 +43,30 @@ ul, ol {
 }
 
 /* =========================================
-   ОСНОВНОЙ КОНТЕЙНЕР
+   ОСНОВНОЙ КОНТЕЙНЕР (СТРОГО ПО МАКЕТУ)
    ========================================= */
 .content {
-  inline-size: 1200px;
+  inline-size: 1200px; /* Жестко фиксируем ширину */
   display: flex;
   flex-direction: row;
-  align-items: flex-end; /* Выравниваем колонки по нижнему краю, как в макете */
-  gap: 30px;
+  align-items: flex-end; /* Выравниваем по нижнему краю */
+  gap: 30px; /* Отступ между колонками как на макете */
 }
 
 /* =========================================
-   ЛЕВАЯ КОЛОНКА: ВИДЕО И ФОРМА
+   ЛЕВАЯ КОЛОНКА: СТРОГО 711px
    ========================================= */
 .result {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Отступ между видео и формой */
+  inline-size: 711px; /* Фиксируем ширину левой колонки */
+  gap: 10px;
 }
 
 .result__video-container {
   position: relative;
-  inline-size: 711px;
-  block-size: 386px;
+  inline-size: 100%; /* Заполняет 711px */
+  block-size: 386px; /* Фиксируем высоту видео */
 }
 
 .result__video {
@@ -80,7 +81,7 @@ ul, ol {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-end; /* Прижимаем кнопку к низу формы */
 }
 
 .search-form__fieldset {
@@ -213,11 +214,11 @@ ul, ol {
 }
 
 /* =========================================
-   ПРАВАЯ КОЛОНКА
+   ПРАВАЯ КОЛОНКА: СТРОГО 399px
    ========================================= */
 .content__details {
-  inline-size: 399px;
-  block-size: 534px; /* Жестко задаем высоту, чтобы не съезжало с макетом */
+  inline-size: 399px; /* Жестко фиксируем ширину правой колонки */
+  block-size: 534px;  /* Фиксируем высоту, чтобы совпадало с макетом */
   display: flex;
   flex-direction: column;
 }
@@ -228,7 +229,7 @@ ul, ol {
   font-size: 75px;
   line-height: 0.93;
   text-transform: uppercase;
-  margin-block-end: 26px;
+  margin-block-end: 23px; /* Отступ до списка как в макете */
 }
 
 .content__accent {
@@ -240,7 +241,7 @@ ul, ol {
    ========================================= */
 .content__list-container {
   position: relative;
-  block-size: 298px; /* Жесткая высота для скролла */
+  block-size: 298px; /* Фиксируем высоту списка */
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -353,5 +354,5 @@ ul, ol {
   flex-shrink: 0;
   inline-size: 100%;
   padding-block: 6px;
-  margin-block-start: 24px; /* Жесткий отступ, чтобы не наезжала на карточки */
+  margin-block-start: 24px; /* Фиксированный отступ от списка */
 }
