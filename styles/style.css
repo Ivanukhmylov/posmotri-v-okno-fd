@@ -43,30 +43,29 @@ ul, ol {
 }
 
 /* =========================================
-   ОСНОВНОЙ КОНТЕЙНЕР (СТРОГО ПО МАКЕТУ)
+   ОСНОВНОЙ КОНТЕЙНЕР
    ========================================= */
 .content {
-  inline-size: 1200px; /* Жестко фиксируем ширину */
+  inline-size: 1200px;
   display: flex;
   flex-direction: row;
   align-items: flex-end; /* Выравниваем по нижнему краю */
-  gap: 30px; /* Отступ между колонками как на макете */
+  gap: 30px;
 }
 
 /* =========================================
-   ЛЕВАЯ КОЛОНКА: СТРОГО 711px
+   ЛЕВАЯ КОЛОНКА: ВИДЕО И ФОРМА
    ========================================= */
 .result {
   display: flex;
   flex-direction: column;
-  inline-size: 711px; /* Фиксируем ширину левой колонки */
-  gap: 10px;
+  inline-size: 711px;
 }
 
 .result__video-container {
   position: relative;
-  inline-size: 100%; /* Заполняет 711px */
-  block-size: 386px; /* Фиксируем высоту видео */
+  inline-size: 100%;
+  block-size: 386px;
 }
 
 .result__video {
@@ -76,12 +75,13 @@ ul, ol {
   object-position: center;
 }
 
-/* Форма */
+/* --- ФОРМА (Точная подгонка по высоте) --- */
 .search-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end; /* Прижимаем кнопку к низу формы */
+  align-items: flex-end; /* Всё выравниваем по нижней линии */
+  padding-block-start: 11px; /* Отступ от видео до формы */
 }
 
 .search-form__fieldset {
@@ -101,7 +101,7 @@ ul, ol {
   cursor: text;
   padding: 0;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 22px; /* Точная высота строки */
   font-size: 18px;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
@@ -132,6 +132,7 @@ ul, ol {
   border-left: 1px solid #fff;
 }
 
+/* Чекбоксы */
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
@@ -178,10 +179,12 @@ ul, ol {
 }
 
 .search-form__submit-button {
-  align-self: flex-end;
   padding: 6px 73.5px;
+  block-size: 34px; /* Жестко задаем высоту кнопки по макету */
+  margin-block-start: 0; /* Убираем возможные отступы */
 }
 
+/* Кнопки */
 .button {
   cursor: pointer;
   font-size: 18px;
@@ -214,22 +217,23 @@ ul, ol {
 }
 
 /* =========================================
-   ПРАВАЯ КОЛОНКА: СТРОГО 399px
+   ПРАВАЯ КОЛОНКА: ЗАГОЛОВОК И СПИСОК
    ========================================= */
 .content__details {
-  inline-size: 399px; /* Жестко фиксируем ширину правой колонки */
-  block-size: 534px;  /* Фиксируем высоту, чтобы совпадало с макетом */
+  inline-size: 399px;
+  block-size: 534px;
   display: flex;
   flex-direction: column;
 }
 
+/* --- ТОЧНАЯ ПОДГОНКА ЗАГОЛОВКА --- */
 .title {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 75px;
-  line-height: 0.93;
+  line-height: 0.93; /* Межстрочный интервал как в макете */
   text-transform: uppercase;
-  margin-block-end: 23px; /* Отступ до списка как в макете */
+  margin-block-end: 26px; /* Отступ до списка */
 }
 
 .content__accent {
@@ -237,11 +241,11 @@ ul, ol {
 }
 
 /* =========================================
-   КОНТЕЙНЕР СПИСКА
+   СПИСОК И КАРТОЧКИ
    ========================================= */
 .content__list-container {
   position: relative;
-  block-size: 298px; /* Фиксируем высоту списка */
+  block-size: 298px;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -266,9 +270,6 @@ ul, ol {
   padding-inline-end: 4px;
 }
 
-/* =========================================
-   КАРТОЧКИ
-   ========================================= */
 .content__video-card {
   display: grid;
   grid-template-columns: 1fr 194px; 
@@ -335,7 +336,7 @@ ul, ol {
 }
 
 /* =========================================
-   ЛОАДЕР
+   ЛОАДЕР И КНОПКА
    ========================================= */
 .preloader {
   position: absolute;
@@ -347,12 +348,10 @@ ul, ol {
   background-color: rgba(27, 25, 25, 0.7);
 }
 
-/* =========================================
-   КНОПКА "ПОКАЗАТЬ ЕЩЕ"
-   ========================================= */
 .more-button {
   flex-shrink: 0;
   inline-size: 100%;
+  block-size: 34px; /* Высота как у кнопки Найти */
   padding-block: 6px;
-  margin-block-start: 24px; /* Фиксированный отступ от списка */
+  margin-block-start: 24px;
 }
