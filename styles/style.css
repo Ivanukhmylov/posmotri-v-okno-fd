@@ -15,30 +15,20 @@ html {
   min-block-size: 100%;
   margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Центрируем контент по горизонтали */
+  align-items: center;     /* Центрируем контент по вертикали */
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
 }
 
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-li,
-blockquote,
-fieldset {
+h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
   margin: 0;
   padding: 0;
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
@@ -53,13 +43,13 @@ ol {
 }
 
 /* =========================================
-   ОСНОВНОЙ КОНТЕЙНЕР (ДВЕ КОЛОНКИ)
+   ОСНОВНОЙ КОНТЕЙНЕР
    ========================================= */
 .content {
   inline-size: 1200px;
   display: flex;
   flex-direction: row;
-  align-items: flex-end; /* Выравниваем низ колонок */
+  align-items: flex-end; /* Выравниваем колонки по нижнему краю, как в макете */
   gap: 30px;
 }
 
@@ -69,6 +59,7 @@ ol {
 .result {
   display: flex;
   flex-direction: column;
+  gap: 10px; /* Отступ между видео и формой */
 }
 
 .result__video-container {
@@ -89,15 +80,13 @@ ol {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end; /* Кнопка "Найти" прижата к низу */
-  margin-block-start: 11px; /* Отступ от видео до формы, как в макете */
+  align-items: flex-end;
 }
 
 .search-form__fieldset {
   border: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
 .search-form__fieldset-title {
@@ -107,7 +96,6 @@ ol {
   padding-block-end: 5px;
 }
 
-/* Текстовое поле "Город" */
 .search-form__textfield {
   cursor: text;
   padding: 0;
@@ -143,7 +131,6 @@ ol {
   border-left: 1px solid #fff;
 }
 
-/* Чекбоксы */
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
@@ -190,10 +177,10 @@ ol {
 }
 
 .search-form__submit-button {
-  padding: 6px 73.5px; /* Жесткие размеры кнопки Найти */
+  align-self: flex-end;
+  padding: 6px 73.5px;
 }
 
-/* Кнопки общие */
 .button {
   cursor: pointer;
   font-size: 18px;
@@ -226,10 +213,11 @@ ol {
 }
 
 /* =========================================
-   ПРАВАЯ КОЛОНКА: ЗАГОЛОВОК И СПИСОК
+   ПРАВАЯ КОЛОНКА
    ========================================= */
 .content__details {
   inline-size: 399px;
+  block-size: 534px; /* Жестко задаем высоту, чтобы не съезжало с макетом */
   display: flex;
   flex-direction: column;
 }
@@ -240,7 +228,7 @@ ol {
   font-size: 75px;
   line-height: 0.93;
   text-transform: uppercase;
-  margin-block-end: 23px; /* Отступ до списка как в макете */
+  margin-block-end: 26px;
 }
 
 .content__accent {
@@ -248,13 +236,13 @@ ol {
 }
 
 /* =========================================
-   КОНТЕЙНЕР СПИСКА И СКРОЛЛА
+   КОНТЕЙНЕР СПИСКА
    ========================================= */
 .content__list-container {
-  position: relative; 
-  block-size: 298px; /* Жестко по макету */
-  overflow-y: auto; 
-  overflow-x: hidden; 
+  position: relative;
+  block-size: 298px; /* Жесткая высота для скролла */
+  overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
 }
@@ -270,15 +258,15 @@ ol {
   border-radius: 4px;
 }
 
-/* Сам список карточек */
 .content__list {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* Отступ между карточками */
+  gap: 30px;
+  padding-inline-end: 4px;
 }
 
 /* =========================================
-   КАРТОЧКА ВИДЕО
+   КАРТОЧКИ
    ========================================= */
 .content__video-card {
   display: grid;
@@ -300,9 +288,9 @@ ol {
   line-height: 1.0;
   text-transform: uppercase;
   padding-block-end: 6px;
-  white-space: nowrap;      
-  overflow: hidden;         
-  text-overflow: ellipsis;  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content__video-card-description {
@@ -362,7 +350,8 @@ ol {
    КНОПКА "ПОКАЗАТЬ ЕЩЕ"
    ========================================= */
 .more-button {
+  flex-shrink: 0;
   inline-size: 100%;
   padding-block: 6px;
-  margin-block-start: 24px; /* Жесткий отступ от списка до кнопки */
+  margin-block-start: 24px; /* Жесткий отступ, чтобы не наезжала на карточки */
 }
