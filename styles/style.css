@@ -210,12 +210,12 @@ ol {
   outline-offset: 1px;
 }
 
-/* --- БЛОК СПИСКА ВИДЕО --- */
+/* --- ПРАВАЯ КОЛОНКА --- */
 .content__details {
   inline-size: 399px;
+  block-size: 534px; /* Жестко фиксируем высоту как в макете */
   display: flex;
   flex-direction: column;
-  gap: 26px;
 }
 
 .title {
@@ -224,20 +224,23 @@ ol {
   font-size: 75px;
   line-height: 0.93;
   text-transform: uppercase;
+  margin-block-end: 26px;
 }
 
 .content__accent {
   color: #545050;
 }
 
-/* Контейнер со скроллом и relative для лоадера */
+/* --- КОНТЕЙНЕР ДЛЯ СПИСКА (скролл и лоадер) --- */
 .content__list-container {
-  position: relative; 
-  block-size: 298px;
-  overflow-y: auto;
+  position: relative; /* Обязательно для центрирования лоадера */
+  block-size: 298px; /* Ограничиваем высоту скролла */
+  overflow-y: auto; /* Скролл строго здесь */
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
+  display: flex;
+  flex-direction: column;
 }
 
 .content__list-container::-webkit-scrollbar {
@@ -251,10 +254,12 @@ ol {
   border-radius: 4px;
 }
 
+/* Сам список без скролла, только flex */
 .content__list {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding-inline-end: 4px; /* Чтобы контент не прилипал к скроллбару */
 }
 
 /* Сетка карточек */
@@ -322,7 +327,7 @@ ol {
   background-color: #545050;
 }
 
-/* --- ПРЕЛОАДЕР (Центрируем внутри списка) --- */
+/* --- ЛОАДЕР --- */
 .preloader {
   position: absolute;
   inset: 0;
@@ -334,14 +339,13 @@ ol {
 }
 
 /* --- КНОПКА "ПОКАЗАТЬ ЕЩЕ" --- */
+/* Прижимаем её к низу и защищаем от сжатия */
 .more-button {
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
+  flex-shrink: 0; /* Кнопка не сжимается */
   inline-size: 100%;
   padding-block: 6px;
-  background-color: #1b1919;
-  margin-block-start: 20px;
+  margin-block-start: 20px; /* Отступ от списка */
+  background-color: transparent;
 }
 
 .more-button:focus-visible {
