@@ -1,6 +1,3 @@
-/* =========================================
-   1. БАЗОВЫЙ СБРОС И ГЛОБАЛЬНЫЕ СТИЛИ
-   ========================================= */
 *,
 *::before,
 *::after {
@@ -11,27 +8,35 @@ html {
   block-size: 100%;
 }
 
-body {
-  margin: 0;
-}
-
 .page {
-  min-block-size: 100%;
+  inline-size: 1200px;
+  block-size: 100%;
+  margin: auto;
+  color: #fff;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  background-color: #1b1919;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
-  font-size: 18px;
-  background-color: #1b1919;
 }
 
-h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+blockquote,
+fieldset {
   margin: 0;
   padding: 0;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -45,31 +50,53 @@ ul, ol {
   white-space: nowrap;
 }
 
-/* =========================================
-   2. ОСНОВНОЙ КОНТЕЙНЕР (1200px)
-   ========================================= */
-.content {
-  inline-size: 1200px;
+.button {
+  inline-size: 194px;
+  block-size: 34px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  background-color: transparent;
+  color: inherit;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end; /* Выравниваем низ колонок */
-  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
 }
 
-/* =========================================
-   3. ЛЕВАЯ КОЛОНКА (ВИДЕО + ФОРМА)
-   ========================================= */
+.button:active {
+  background: #545050;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+  align-items: end;
+}
+
 .result {
   display: flex;
   flex-direction: column;
-  inline-size: 711px;
-  gap: 11px; /* Отступ между видео и формой ровно 11px */
-}
-
-.result__video-container {
-  position: relative;
-  inline-size: 100%;
-  block-size: 386px;
+  gap: 16px;
 }
 
 .result__video {
@@ -79,183 +106,146 @@ ul, ol {
   object-position: center;
 }
 
-/* =========================================
-   4. ФОРМА ПОИСКА
-   ========================================= */
+.result__video-container {
+  position: relative;
+  inline-size: 711px;
+  block-size: 386px;
+}
+
 .search-form {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end; /* Кнопка "Найти" прижата к низу */
+  align-items: start;
 }
 
 .search-form__fieldset {
   border: none;
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .search-form__fieldset-title {
-  font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
-  padding-block-end: 5px; /* Точный отступ до текста */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-/* --- ПОЛЕ ВВОДА "ГОРОД" --- */
 .search-form__textfield {
-  cursor: text;
-  padding: 0;
-  font-weight: 400;
-  line-height: 22px;
-  font-size: 18px;
-  color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
+  border-inline-start: 1px solid transparent;
+  border-inline-end: 1px solid transparent;
+  border-block-start: 1px solid #fff;
+  border-block-end: 1px solid #fff;
   background-color: transparent;
-  min-inline-size: 225px;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
+  color: #fff;
+  inline-size: 225px;
+  block-size: 27px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  cursor: text;
 }
 
 .search-form__textfield::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.search-form__textfield:active {
+  border-inline-start: 1px solid #fff;
+  border-inline-end: 1px solid #fff;
+}
+
 .search-form__textfield:focus {
   outline: none;
 }
 
-.search-form__label:has(.search-form__textfield:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
-}
-
-.search-form__textfield:active {
-  border-right: 1px solid #fff;
-  border-left: 1px solid #fff;
-}
-
-/* --- ЧЕКБОКСЫ "ВРЕМЯ СУТОК" --- */
-.search-form__checkbox-list {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  padding-block-start: 4px;
-}
-
 .search-form__label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   inline-size: fit-content;
   cursor: pointer;
-}
-
-.search-form__pseudo-checkbox {
   display: flex;
-  justify-content: center;
+  gap: 5px;
   align-items: center;
-  inline-size: 19px;
-  block-size: 19px;
-  border: 1px solid #fff;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  content: "";
-  display: block;
-  inline-size: 15px;
-  block-size: 15px;
-  background-color: #fff;
-}
-
-.search-form__label:has(.search-form__checkbox:focus-visible) {
+.search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
   outline-offset: 1px;
 }
 
 .search-form__label-text {
-  padding-inline-start: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
-.search-form__label:not(:has(.search-form__textfield)):hover {
+.search-form__label:hover:not(:has(.search-form__textfield)) {
   text-decoration: underline;
 }
 
-/* --- КНОПКА "НАЙТИ" --- */
-.search-form__submit-button {
-  padding: 6px 73.5px;
-  block-size: 34px; /* Жесткая высота, чтобы не прыгала */
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
 }
 
-/* =========================================
-   5. ОБЩИЕ СТИЛИ КНОПОК
-   ========================================= */
-.button {
-  cursor: pointer;
-  font-size: 18px;
-  color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
-  background-color: transparent;
-  font-weight: 400;
-  line-height: 21px;
+.search-form__pseudo-checkbox {
   border: 1px solid #fff;
+  inline-size: 19px;
+  block-size: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.button:focus {
-  outline: none;
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: '';
+  inline-size: 15px;
+  block-size: 15px;
+  background: #fff;
 }
 
-.button:hover {
-  text-decoration: underline;
+.search-form__submit-button {
+  align-self: end;
 }
 
-.button:active {
-  background-color: #545050;
-}
-
-.search-form__submit-button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
-}
-
-/* =========================================
-   6. ПРАВАЯ КОЛОНКА (ЗАГОЛОВОК И СПИСОК)
-   ========================================= */
 .content__details {
   inline-size: 399px;
-  block-size: 534px; /* Жесткая высота ровно по макету */
+  block-size: 534px;
   display: flex;
   flex-direction: column;
+  gap: 26px;
 }
 
-/* --- ЗАГОЛОВОК --- */
 .title {
-  font-family: "Oswald", sans-serif;
-  font-weight: 700;
+  inline-size: 260px;
+  block-size: 210px;
+  font-family: Oswald, sans-serif;
   font-size: 75px;
-  line-height: 0.93; /* Идеальный межстрочный интервал */
+  font-weight: 700;
+  font-style: normal;
+  line-height: 94%;
   text-transform: uppercase;
-  margin-block-end: 26px; /* Отступ до списка карточек */
 }
 
 .content__accent {
   color: #545050;
 }
 
-/* =========================================
-   7. КОНТЕЙНЕР СПИСКА (СКРОЛЛ)
-   ========================================= */
 .content__list-container {
   position: relative;
-  block-size: 298px; /* Жестко 298px как в макете */
+  inline-size: 399px;
+  block-size: 298px;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
 }
@@ -263,9 +253,11 @@ ul, ol {
 .content__list-container::-webkit-scrollbar {
   inline-size: 4px;
 }
+
 .content__list-container::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .content__list-container::-webkit-scrollbar-thumb {
   background-color: #545050;
   border-radius: 4px;
@@ -275,63 +267,64 @@ ul, ol {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding-inline-end: 4px;
 }
 
-/* =========================================
-   8. КАРТОЧКИ ВИДЕО
-   ========================================= */
 .content__video-card {
-  display: grid;
-  grid-template-columns: 1fr 194px; 
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: space-between;
   align-items: start;
-  gap: 10px;
 }
 
 .content__video-card-description-container {
-  padding-inline-start: 2px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: start;
+  gap: 6px;
   overflow: hidden;
-  min-inline-size: 0; /* Обязательно для работы многоточия */
-}
-
-.content__video-card-title {
-  font-family: "Oswald", sans-serif;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 1.0;
-  text-transform: uppercase;
-  padding-block-end: 6px;
-  white-space: nowrap;      
-  overflow: hidden;         
-  text-overflow: ellipsis;  /* Обрезка городов троеточием */
-}
-
-.content__video-card-description {
-  font-weight: 400;
-  line-height: 1.2;
+  min-inline-size: 0;
 }
 
 .content__video-card-thumbnail {
-  display: block;
   inline-size: 194px;
   block-size: 103px;
   object-fit: cover;
   object-position: center;
 }
 
-.content__card-link {
-  display: block;
-  text-decoration: none;
-  color: #fff;
+.content__video-card-title {
+  font-size: 30px;
+  font-family: Oswald, sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+  line-height: 1;
+  inline-size: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.content__card-link:focus {
-  outline: none;
+.content__video-card-description {
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.content__card-link {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  margin: 2px;
 }
 
 .content__card-link:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 2px;
+}
+
+.content__card-link:focus {
+  outline: none;
 }
 
 .content__card-link_current {
@@ -343,12 +336,9 @@ ul, ol {
 }
 
 .content__card-link:active {
-  background-color: #545050;
+  background: #545050;
 }
 
-/* =========================================
-   9. ЛОАДЕР И КНОПКА "ПОКАЗАТЬ ЕЩЕ"
-   ========================================= */
 .preloader {
   position: absolute;
   inset: 0;
@@ -360,9 +350,6 @@ ul, ol {
 }
 
 .more-button {
-  flex-shrink: 0;
   inline-size: 100%;
-  block-size: 34px; /* Высота как у кнопки Найти */
-  padding-block: 6px;
-  margin-block-start: 24px; /* Отступ от списка до кнопки */
+  flex-shrink: 0;
 }
