@@ -1,3 +1,6 @@
+/* =========================================
+   ГЛОБАЛЬНЫЕ СТИЛИ И СБРОС
+   ========================================= */
 *,
 *::before,
 *::after {
@@ -49,19 +52,23 @@ ol {
   white-space: nowrap;
 }
 
+/* =========================================
+   ОСНОВНОЙ КОНТЕЙНЕР (ДВЕ КОЛОНКИ)
+   ========================================= */
 .content {
   inline-size: 1200px;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-end; /* Выравниваем низ колонок */
   gap: 30px;
 }
 
-/* --- БЛОК РЕЗУЛЬТАТА И ФОРМЫ --- */
+/* =========================================
+   ЛЕВАЯ КОЛОНКА: ВИДЕО И ФОРМА
+   ========================================= */
 .result {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .result__video-container {
@@ -77,17 +84,20 @@ ol {
   object-position: center;
 }
 
+/* Форма */
 .search-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end; /* Кнопка "Найти" прижата к низу */
+  margin-block-start: 11px; /* Отступ от видео до формы, как в макете */
 }
 
 .search-form__fieldset {
   border: none;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .search-form__fieldset-title {
@@ -97,6 +107,7 @@ ol {
   padding-block-end: 5px;
 }
 
+/* Текстовое поле "Город" */
 .search-form__textfield {
   cursor: text;
   padding: 0;
@@ -132,6 +143,7 @@ ol {
   border-left: 1px solid #fff;
 }
 
+/* Чекбоксы */
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
@@ -178,10 +190,10 @@ ol {
 }
 
 .search-form__submit-button {
-  align-self: flex-end;
-  padding: 6px 73.5px;
+  padding: 6px 73.5px; /* Жесткие размеры кнопки Найти */
 }
 
+/* Кнопки общие */
 .button {
   cursor: pointer;
   font-size: 18px;
@@ -213,10 +225,11 @@ ol {
   outline-offset: 1px;
 }
 
-/* --- ПРАВАЯ КОЛОНКА --- */
+/* =========================================
+   ПРАВАЯ КОЛОНКА: ЗАГОЛОВОК И СПИСОК
+   ========================================= */
 .content__details {
   inline-size: 399px;
-  block-size: 534px;
   display: flex;
   flex-direction: column;
 }
@@ -227,23 +240,23 @@ ol {
   font-size: 75px;
   line-height: 0.93;
   text-transform: uppercase;
-  margin-block-end: 26px;
+  margin-block-end: 23px; /* Отступ до списка как в макете */
 }
 
 .content__accent {
   color: #545050;
 }
 
-/* --- КОНТЕЙНЕР ДЛЯ СПИСКА И СКРОЛЛА --- */
+/* =========================================
+   КОНТЕЙНЕР СПИСКА И СКРОЛЛА
+   ========================================= */
 .content__list-container {
-  position: relative; /* Для лоадера */
-  block-size: 298px;
-  overflow-y: auto; /* Скролл только здесь */
-  overflow-x: hidden;
+  position: relative; 
+  block-size: 298px; /* Жестко по макету */
+  overflow-y: auto; 
+  overflow-x: hidden; 
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
-  display: flex;
-  flex-direction: column;
 }
 
 .content__list-container::-webkit-scrollbar {
@@ -257,15 +270,16 @@ ol {
   border-radius: 4px;
 }
 
-/* Сам список */
+/* Сам список карточек */
 .content__list {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding-inline-end: 4px; 
+  gap: 30px; /* Отступ между карточками */
 }
 
-/* Сетка карточек */
+/* =========================================
+   КАРТОЧКА ВИДЕО
+   ========================================= */
 .content__video-card {
   display: grid;
   grid-template-columns: 1fr 194px; 
@@ -273,14 +287,12 @@ ol {
   gap: 10px;
 }
 
-/* Контейнер с текстом (обязательно min-inline-size: 0 для работы многоточия в сетке) */
 .content__video-card-description-container {
   padding-inline-start: 2px;
   overflow: hidden;
   min-inline-size: 0; 
 }
 
-/* Заголовок с обрезкой */
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
@@ -288,9 +300,9 @@ ol {
   line-height: 1.0;
   text-transform: uppercase;
   padding-block-end: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; 
+  white-space: nowrap;      
+  overflow: hidden;         
+  text-overflow: ellipsis;  
 }
 
 .content__video-card-description {
@@ -333,7 +345,9 @@ ol {
   background-color: #545050;
 }
 
-/* --- ЛОАДЕР --- */
+/* =========================================
+   ЛОАДЕР
+   ========================================= */
 .preloader {
   position: absolute;
   inset: 0;
@@ -344,20 +358,11 @@ ol {
   background-color: rgba(27, 25, 25, 0.7);
 }
 
-/* --- КНОПКА "ПОКАЗАТЬ ЕЩЕ" --- */
+/* =========================================
+   КНОПКА "ПОКАЗАТЬ ЕЩЕ"
+   ========================================= */
 .more-button {
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
-  flex-shrink: 0;
   inline-size: 100%;
-  min-block-size: 34px; 
   padding-block: 6px;
-  margin-block-start: 20px; 
-  background-color: #1b1919; 
-}
-
-.more-button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
+  margin-block-start: 24px; /* Жесткий отступ от списка до кнопки */
 }
