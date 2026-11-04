@@ -191,6 +191,9 @@ ol {
   font-weight: 400;
   line-height: 21px;
   border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:focus {
@@ -213,7 +216,7 @@ ol {
 /* --- ПРАВАЯ КОЛОНКА --- */
 .content__details {
   inline-size: 399px;
-  block-size: 534px; /* Жестко фиксируем высоту как в макете */
+  block-size: 534px;
   display: flex;
   flex-direction: column;
 }
@@ -231,11 +234,11 @@ ol {
   color: #545050;
 }
 
-/* --- КОНТЕЙНЕР ДЛЯ СПИСКА (скролл и лоадер) --- */
+/* --- КОНТЕЙНЕР ДЛЯ СПИСКА И СКРОЛЛА --- */
 .content__list-container {
-  position: relative; /* Обязательно для центрирования лоадера */
-  block-size: 298px; /* Ограничиваем высоту скролла */
-  overflow-y: auto; /* Скролл строго здесь */
+  position: relative; /* Для лоадера */
+  block-size: 298px;
+  overflow-y: auto; /* Скролл только здесь */
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
@@ -254,12 +257,12 @@ ol {
   border-radius: 4px;
 }
 
-/* Сам список без скролла, только flex */
+/* Сам список */
 .content__list {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding-inline-end: 4px; /* Чтобы контент не прилипал к скроллбару */
+  padding-inline-end: 4px; 
 }
 
 /* Сетка карточек */
@@ -270,11 +273,14 @@ ol {
   gap: 10px;
 }
 
+/* Контейнер с текстом (обязательно min-inline-size: 0 для работы многоточия в сетке) */
 .content__video-card-description-container {
   padding-inline-start: 2px;
   overflow: hidden;
+  min-inline-size: 0; 
 }
 
+/* Заголовок с обрезкой */
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
@@ -339,13 +345,16 @@ ol {
 }
 
 /* --- КНОПКА "ПОКАЗАТЬ ЕЩЕ" --- */
-/* Прижимаем её к низу и защищаем от сжатия */
 .more-button {
-  flex-shrink: 0; /* Кнопка не сжимается */
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  flex-shrink: 0;
   inline-size: 100%;
+  min-block-size: 34px; 
   padding-block: 6px;
-  margin-block-start: 20px; /* Отступ от списка */
-  background-color: transparent;
+  margin-block-start: 20px; 
+  background-color: #1b1919; 
 }
 
 .more-button:focus-visible {
