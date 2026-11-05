@@ -40,6 +40,7 @@ ul, ol {
   white-space: nowrap;
 }
 
+/* --- КНОПКИ --- */
 .button {
   inline-size: 194px;
   block-size: 34px;
@@ -251,11 +252,9 @@ ul, ol {
 .content__list::-webkit-scrollbar {
   inline-size: 4px;
 }
-
 .content__list::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .content__list::-webkit-scrollbar-thumb {
   background-color: #545050;
   border-radius: 4px;
@@ -344,12 +343,8 @@ ul, ol {
 }
 
 .more-button {
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
   flex-shrink: 0;
   inline-size: 100%;
   padding-block: 6px;
   margin-block-start: 20px;
-  background-color: #1b1919;
 }
