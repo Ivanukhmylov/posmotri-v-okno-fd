@@ -40,7 +40,6 @@ ul, ol {
   white-space: nowrap;
 }
 
-/* --- КНОПКИ --- */
 .button {
   inline-size: 194px;
   block-size: 34px;
@@ -233,31 +232,29 @@ ul, ol {
   position: relative;
   inline-size: 399px;
   block-size: 298px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #545050 transparent;
+}
+
+.content__list-container::-webkit-scrollbar {
+  inline-size: 4px;
+}
+
+.content__list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content__list-container::-webkit-scrollbar-thumb {
+  background-color: #545050;
+  border-radius: 4px;
 }
 
 .content__list {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #545050 transparent;
-  padding-inline-end: 4px;
-}
-
-.content__list::-webkit-scrollbar {
-  inline-size: 4px;
-}
-.content__list::-webkit-scrollbar-track {
-  background: transparent;
-}
-.content__list::-webkit-scrollbar-thumb {
-  background-color: #545050;
-  border-radius: 4px;
 }
 
 .content__video-card {
@@ -345,6 +342,5 @@ ul, ol {
 .more-button {
   flex-shrink: 0;
   inline-size: 100%;
-  padding-block: 6px;
   margin-block-start: 20px;
 }
