@@ -228,28 +228,23 @@ ul, ol {
   color: #545050;
 }
 
+/* --- КОНТЕЙНЕР СПИСКА --- */
 .content__list-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   inline-size: 399px;
   block-size: 298px;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #545050 transparent;
+  
+  /* Скрываем скроллбар, чтобы он не сдвигал контент и не отличался от макета */
+  scrollbar-width: none; 
 }
 
+/* Скрываем скроллбар для Chrome/Safari/Edge */
 .content__list-container::-webkit-scrollbar {
-  inline-size: 4px;
-}
-
-.content__list-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.content__list-container::-webkit-scrollbar-thumb {
-  background-color: #545050;
-  border-radius: 4px;
+  display: none;
 }
 
 .content__list {
@@ -331,15 +326,18 @@ ul, ol {
 }
 
 .preloader {
-  margin: auto;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(27, 25, 25, 0.7);
 }
 
 .more-button {
   flex-shrink: 0;
   inline-size: 100%;
-  margin-block-start: 10px;
-  padding-block: 6px;
+  block-size: 34px; /* Жесткая высота кнопки */
+  margin-block-start: 20px;
 }
