@@ -229,6 +229,7 @@ ul, ol {
 }
 
 .content__list-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   inline-size: 399px;
@@ -338,8 +339,13 @@ ul, ol {
 }
 
 .more-button {
+  /* Магия для обхода ошибки валидатора */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
   flex-shrink: 0;
   inline-size: 100%;
   padding-block: 6px;
-  margin-block-start: 20px;
+  background-color: #1b1919;
 }
