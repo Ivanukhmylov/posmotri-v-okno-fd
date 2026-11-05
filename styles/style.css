@@ -229,8 +229,8 @@ ul, ol {
 }
 
 .content__list-container {
-  display: grid;
-  grid-template-rows: 1fr auto;
+  display: flex;
+  flex-direction: column;
   inline-size: 399px;
   block-size: 298px;
   overflow-y: auto;
