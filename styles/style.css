@@ -237,13 +237,20 @@ ol {
   color: #545050;
 }
 
-/* --- КОНТЕЙНЕР СПИСКА (СКРОЛЛ) --- */
 .content__list-container {
   position: relative;
   display: flex;
   flex-direction: column;
   inline-size: 399px;
   block-size: 298px;
+  overflow-y: hidden;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  block-size: 244px;
   overflow-y: auto;
   overflow-x: hidden;
   padding-inline-end: 4px;
@@ -251,23 +258,17 @@ ol {
   scrollbar-color: #545050 transparent;
 }
 
-.content__list-container::-webkit-scrollbar {
+.content__list::-webkit-scrollbar {
   inline-size: 4px;
 }
 
-.content__list-container::-webkit-scrollbar-track {
+.content__list::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.content__list-container::-webkit-scrollbar-thumb {
+.content__list::-webkit-scrollbar-thumb {
   background-color: #545050;
   border-radius: 4px;
-}
-
-.content__list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
 }
 
 .content__video-card {
