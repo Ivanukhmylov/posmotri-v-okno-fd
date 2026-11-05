@@ -40,6 +40,7 @@ ul, ol {
   white-space: nowrap;
 }
 
+/* --- КНОПКИ --- */
 .button {
   inline-size: 194px;
   block-size: 34px;
@@ -77,6 +78,7 @@ ul, ol {
   text-decoration: underline;
 }
 
+/* --- ОСНОВНОЙ КОНТЕЙНЕР --- */
 .content {
   display: flex;
   gap: 30px;
@@ -102,6 +104,7 @@ ul, ol {
   block-size: 386px;
 }
 
+/* --- ФОРМА --- */
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -205,6 +208,7 @@ ul, ol {
   align-self: end;
 }
 
+/* --- ПРАВАЯ КОЛОНКА --- */
 .content__details {
   inline-size: 399px;
   block-size: 534px;
@@ -228,6 +232,7 @@ ul, ol {
   color: #545050;
 }
 
+/* --- СКРОЛЛ И ЛОАДЕР --- */
 .content__list-container {
   position: relative;
   inline-size: 399px;
@@ -237,6 +242,7 @@ ul, ol {
   overflow: hidden;
 }
 
+/* Внутренний список со скроллом */
 .content__list {
   display: flex;
   flex-direction: column;
@@ -246,21 +252,24 @@ ul, ol {
   scrollbar-width: thin;
   scrollbar-color: #545050 transparent;
   padding-inline-end: 4px;
+  
+  /* Магия: резервируем место под кнопку внизу, чтобы скролл не доходил до неё */
+  padding-block-end: 50px; 
+  margin-block-end: -50px;
 }
 
 .content__list::-webkit-scrollbar {
   inline-size: 4px;
 }
-
 .content__list::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .content__list::-webkit-scrollbar-thumb {
   background-color: #545050;
   border-radius: 4px;
 }
 
+/* --- КАРТОЧКИ --- */
 .content__video-card {
   border: 2px solid transparent;
   display: flex;
@@ -333,6 +342,7 @@ ul, ol {
   background: #545050;
 }
 
+/* --- ЛОАДЕР --- */
 .preloader {
   position: absolute;
   inset: 0;
@@ -343,8 +353,20 @@ ul, ol {
   background-color: rgba(27, 25, 25, 0.7);
 }
 
+/* --- КНОПКА "ПОКАЗАТЬ ЕЩЕ" --- */
 .more-button {
   flex-shrink: 0;
   inline-size: 100%;
-  margin-block-start: 24px;
+  
+  /* Отрываем кнопку от скролла и прижимаем к низу контейнера */
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  
+  /* Компенсация отрицательного отступа списка */
+  margin-block-start: 10px;
+  margin-block-end: 0;
+  
+  /* Фон страницы, чтобы под кнопкой не было видно карточек */
+  background-color: #1b1919; 
 }
