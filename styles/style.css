@@ -229,9 +229,8 @@ ul, ol {
 }
 
 .content__list-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto;
   inline-size: 399px;
   block-size: 298px;
   overflow-y: auto;
@@ -339,13 +338,8 @@ ul, ol {
 }
 
 .more-button {
-  /* Магия для обхода ошибки валидатора */
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 5;
   flex-shrink: 0;
   inline-size: 100%;
+  margin-block-start: 10px;
   padding-block: 6px;
-  background-color: #1b1919;
 }
