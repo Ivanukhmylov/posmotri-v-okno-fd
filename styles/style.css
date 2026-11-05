@@ -21,12 +21,22 @@ html {
   align-items: center;
 }
 
-h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+blockquote,
+fieldset {
   margin: 0;
   padding: 0;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -228,21 +238,16 @@ ul, ol {
   color: #545050;
 }
 
-/* --- КОНТЕЙНЕР СПИСКА --- */
 .content__list-container {
-  position: relative;
   display: flex;
   flex-direction: column;
   inline-size: 399px;
   block-size: 298px;
   overflow-y: auto;
   overflow-x: hidden;
-  
-  /* Скрываем скроллбар, чтобы он не сдвигал контент и не отличался от макета */
-  scrollbar-width: none; 
+  scrollbar-width: none;
 }
 
-/* Скрываем скроллбар для Chrome/Safari/Edge */
 .content__list-container::-webkit-scrollbar {
   display: none;
 }
@@ -326,18 +331,15 @@ ul, ol {
 }
 
 .preloader {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(27, 25, 25, 0.7);
 }
 
 .more-button {
   flex-shrink: 0;
   inline-size: 100%;
-  block-size: 34px; /* Жесткая высота кнопки */
+  block-size: 34px;
   margin-block-start: 20px;
 }
