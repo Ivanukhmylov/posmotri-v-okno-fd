@@ -21,22 +21,12 @@ html {
   align-items: center;
 }
 
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-li,
-blockquote,
-fieldset {
+h1, h2, h3, h4, p, ul, ol, li, blockquote, fieldset {
   margin: 0;
   padding: 0;
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
@@ -97,6 +87,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  inline-size: 711px;
 }
 
 .result__video {
@@ -108,7 +99,7 @@ ol {
 
 .result__video-container {
   position: relative;
-  inline-size: 711px;
+  inline-size: 100%;
   block-size: 386px;
 }
 
@@ -238,6 +229,7 @@ ol {
   color: #545050;
 }
 
+/* --- КОНТЕЙНЕР СПИСКА --- */
 .content__list-container {
   display: flex;
   flex-direction: column;
@@ -245,11 +237,22 @@ ol {
   block-size: 298px;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: none;
+  padding-inline-end: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #545050 transparent;
 }
 
 .content__list-container::-webkit-scrollbar {
-  display: none;
+  inline-size: 4px;
+}
+
+.content__list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content__list-container::-webkit-scrollbar-thumb {
+  background-color: #545050;
+  border-radius: 4px;
 }
 
 .content__list {
@@ -330,16 +333,15 @@ ol {
   background: #545050;
 }
 
-.preloader {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* --- КНОПКА "ПОКАЗАТЬ ЕЩЕ" (ПРИЛИПАЕТ К НИЗУ) --- */
 .more-button {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
   flex-shrink: 0;
   inline-size: 100%;
   block-size: 34px;
   margin-block-start: 20px;
+  padding-block: 6px;
+  background-color: #1b1919; 
 }
