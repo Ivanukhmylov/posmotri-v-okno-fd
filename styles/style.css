@@ -229,7 +229,8 @@ ul, ol {
 }
 
 .content__list-container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   inline-size: 399px;
   block-size: 298px;
   overflow-y: auto;
@@ -330,13 +331,10 @@ ul, ol {
 }
 
 .preloader {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(27, 25, 25, 0.7);
 }
 
 .more-button {
